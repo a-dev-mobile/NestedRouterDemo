@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nes_route/tab_and_nested/app/router/app_route_path.dart';
-import 'package:nes_route/tab_and_nested/core/services/services.dart';
+import 'package:nes_route/tab_and_nested_nav_2/app/router/app_route_path.dart';
+import 'package:nes_route/tab_and_nested_nav_2/core/services/services.dart';
 
 ///
 class AppRouteInformationParser extends RouteInformationParser<AppRoutePath> {

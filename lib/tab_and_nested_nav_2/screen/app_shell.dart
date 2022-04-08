@@ -1,7 +1,7 @@
 // Виджет, содержащий адаптивный scaffold
 import 'package:flutter/material.dart';
-import 'package:nes_route/tab_and_nested/app/router/app_state.dart';
-import 'package:nes_route/tab_and_nested/app/router/inner_route_delegate.dart';
+import 'package:nes_route/tab_and_nested_nav_2/app/router/app_state.dart';
+import 'package:nes_route/tab_and_nested_nav_2/app/router/inner_route_delegate.dart';
 
 /// bottom bar
 class AppShell extends StatefulWidget {

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:nes_route/tab_and_nested/app/router/app_route_path.dart';
-import 'package:nes_route/tab_and_nested/app/router/app_state.dart';
-import 'package:nes_route/tab_and_nested/core/services/services.dart';
+import 'package:nes_route/tab_and_nested_nav_2/app/router/app_route_path.dart';
+import 'package:nes_route/tab_and_nested_nav_2/app/router/app_state.dart';
+import 'package:nes_route/tab_and_nested_nav_2/core/services/services.dart';
 
-import 'package:nes_route/tab_and_nested/screen/app_shell.dart';
+import 'package:nes_route/tab_and_nested_nav_2/screen/app_shell.dart';
 
 ///
 class AppRouterDelegate extends RouterDelegate<AppRoutePath>

@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:nes_route/tab_and_nested/app/router/app_route_path.dart';
-import 'package:nes_route/tab_and_nested/app/router/app_state.dart';
-import 'package:nes_route/tab_and_nested/app/router/pages_animation/fade_animation_page.dart';
-import 'package:nes_route/tab_and_nested/core/services/services.dart';
-import 'package:nes_route/tab_and_nested/model/models.dart';
-import 'package:nes_route/tab_and_nested/screen/view/credit_screen.dart';
+import 'package:nes_route/tab_and_nested_nav_2/app/router/app_route_path.dart';
+import 'package:nes_route/tab_and_nested_nav_2/app/router/app_state.dart';
+import 'package:nes_route/tab_and_nested_nav_2/app/router/pages_animation/fade_animation_page.dart';
+import 'package:nes_route/tab_and_nested_nav_2/core/services/services.dart';
+import 'package:nes_route/tab_and_nested_nav_2/model/models.dart';
+import 'package:nes_route/tab_and_nested_nav_2/screen/view/credit_screen.dart';
 
-import 'package:nes_route/tab_and_nested/screen/view/screen.dart';
+import 'package:nes_route/tab_and_nested_nav_2/screen/view/screen.dart';
 
 ///
 class InnerRouterDelegate extends RouterDelegate<AppRoutePath>

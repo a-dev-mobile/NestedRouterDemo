@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nes_route/tab_and_nested/model/book.dart';
+import 'package:nes_route/tab_and_nested_nav_2/model/book.dart';
 
 class BooksListScreen extends StatelessWidget {
   const BooksListScreen({
