@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nes_route/model/models.dart';
+import 'package:nes_route/tab_and_nested/model/models.dart';
 
 class BookDetailsScreen extends StatelessWidget {
   const BookDetailsScreen({

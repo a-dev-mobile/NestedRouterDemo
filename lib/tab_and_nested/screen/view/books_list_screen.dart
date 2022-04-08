@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:nes_route/model/book.dart';
+import 'package:nes_route/tab_and_nested/model/book.dart';
 
 class BooksListScreen extends StatelessWidget {
-
-   const BooksListScreen({Key? key, 
+  const BooksListScreen({
+    Key? key,
     required this.books,
     required this.onTapped,
   }) : super(key: key);

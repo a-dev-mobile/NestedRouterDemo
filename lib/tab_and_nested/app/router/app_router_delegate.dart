@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:nes_route/app/router/app_route_path.dart';
-import 'package:nes_route/app/router/app_state.dart';
-import 'package:nes_route/core/services/services.dart';
+import 'package:nes_route/tab_and_nested/app/router/app_route_path.dart';
+import 'package:nes_route/tab_and_nested/app/router/app_state.dart';
+import 'package:nes_route/tab_and_nested/core/services/services.dart';
 
-import 'package:nes_route/screen/app_shell.dart';
+import 'package:nes_route/tab_and_nested/screen/app_shell.dart';
 
 ///
 class AppRouterDelegate extends RouterDelegate<AppRoutePath>
@@ -18,8 +18,7 @@ class AppRouterDelegate extends RouterDelegate<AppRoutePath>
 
   final AppState _appState = AppState();
 
-
-///
+  ///
   @override
   AppRoutePath get currentConfiguration {
     final int selectedIndex = _appState.selectedIndex;
@@ -54,9 +53,7 @@ class AppRouterDelegate extends RouterDelegate<AppRoutePath>
         ),
       ],
       onPopPage: (route, result) {
-
-
-    log.i('1return route.didPop(result);');
+        log.i('1return route.didPop(result);');
 
         if (!route.didPop(result)) {
           return false;

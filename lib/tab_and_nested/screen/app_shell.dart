@@ -1,7 +1,7 @@
 // Виджет, содержащий адаптивный scaffold
 import 'package:flutter/material.dart';
-import 'package:nes_route/app/router/app_state.dart';
-import 'package:nes_route/app/router/inner_route_delegate.dart';
+import 'package:nes_route/tab_and_nested/app/router/app_state.dart';
+import 'package:nes_route/tab_and_nested/app/router/inner_route_delegate.dart';
 
 /// bottom bar
 class AppShell extends StatefulWidget {
@@ -62,7 +62,8 @@ class _AppShellState extends State<AppShell> {
             icon: Icon(Icons.settings),
             label: 'Settings',
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.credit_score), label: 'о приложении'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.credit_score), label: 'о приложении'),
         ],
         currentIndex: appState!.selectedIndex,
         onTap: (newIndex) => appState.selectedIndex = newIndex,
