@@ -1,15 +1,18 @@
 // Виджет, содержащий адаптивный scaffold
 import 'package:flutter/material.dart';
-import 'package:nes_route/router/book_app_state.dart';
-import 'package:nes_route/router/inner_route_delegate.dart';
+import 'package:nes_route/app/router/app_state.dart';
+import 'package:nes_route/app/router/inner_route_delegate.dart';
 
+/// bottom bar
 class AppShell extends StatefulWidget {
+  ///
   const AppShell({
     Key? key,
-    @required this.appState,
-  }) : super(key: key);
+    @required AppState? appState,
+  })  : _appState = appState,
+        super(key: key);
 
-  final BooksAppState? appState;
+  final AppState? _appState;
   @override
   _AppShellState createState() => _AppShellState();
 }
@@ -21,13 +24,13 @@ class _AppShellState extends State<AppShell> {
   @override
   void initState() {
     super.initState();
-    _routerDelegate = InnerRouterDelegate(widget.appState!);
+    _routerDelegate = InnerRouterDelegate(widget._appState!);
   }
 
   @override
   void didUpdateWidget(covariant AppShell oldWidget) {
     super.didUpdateWidget(oldWidget);
-    _routerDelegate!.appState = widget.appState!;
+    _routerDelegate!.appState = widget._appState!;
   }
 
   @override
@@ -41,7 +44,7 @@ class _AppShellState extends State<AppShell> {
 
   @override
   Widget build(BuildContext context) {
-    final appState = widget.appState;
+    final appState = widget._appState;
 
     // Приоритет требования, Если есть параллельные суб-маршрутизаторы, вам понадобится
     // чтобы выбрать, какой из них должен быть приоритетным;
@@ -59,6 +62,7 @@ class _AppShellState extends State<AppShell> {
             icon: Icon(Icons.settings),
             label: 'Settings',
           ),
+          BottomNavigationBarItem(icon: Icon(Icons.credit_score), label: 'о приложении'),
         ],
         currentIndex: appState!.selectedIndex,
         onTap: (newIndex) => appState.selectedIndex = newIndex,

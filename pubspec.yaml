@@ -20,6 +20,9 @@ dependencies:
   flutter_bloc: ^8.0.1
   hydrated_bloc: ^8.1.0
   flutter_lints: ^1.0.4
+  logger: ^1.1.0
+  package_info_plus: ^1.4.2
+  shared_preferences: ^2.0.13
 
 dev_dependencies:
   flutter_test:

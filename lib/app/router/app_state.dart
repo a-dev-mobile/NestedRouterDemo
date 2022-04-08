@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nes_route/model/models.dart';
 
-class BooksAppState extends ChangeNotifier {
-  BooksAppState() : _selectedIndex = 0;
+class AppState extends ChangeNotifier {
+  AppState() : _selectedIndex = 0;
 
   final List<Book> books = [
     Book('Stranger in a Strange Land', 'Robert A. Heinlein'),
@@ -17,10 +17,10 @@ class BooksAppState extends ChangeNotifier {
   set selectedIndex(int idx) {
     _selectedIndex = idx;
     if (_selectedIndex == 1) {
-      // Remove this line if you want to keep the selected book when navigating
-      // between "settings" and "home" which book was selected when Settings is
-      // tapped.
-      selectedBook = null;
+      // Удалите эту строку, если вы хотите сохранить 
+      //выбранную книгу при переходе между "настройками" и "дом" 
+      //какая книга была выбрана при нажатии кнопки Настройки.
+      // selectedBook = null;
     }
     notifyListeners();
   }

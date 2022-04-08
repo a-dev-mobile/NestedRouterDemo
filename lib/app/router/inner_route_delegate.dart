@@ -1,19 +1,26 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nes_route/app/router/app_route_path.dart';
+import 'package:nes_route/app/router/app_state.dart';
+import 'package:nes_route/app/router/pages_animation/fade_animation_page.dart';
+import 'package:nes_route/core/services/services.dart';
 import 'package:nes_route/model/models.dart';
-import 'package:nes_route/pages_animation/fade_animation_page.dart';
-import 'package:nes_route/router/book_app_state.dart';
-import 'package:nes_route/router/routes.dart';
+import 'package:nes_route/screen/view/credit_screen.dart';
+
 import 'package:nes_route/screen/view/screen.dart';
 
-class InnerRouterDelegate extends RouterDelegate<BookRoutePath>
-    with ChangeNotifier, PopNavigatorRouterDelegateMixin<BookRoutePath> {
-  InnerRouterDelegate(this._appState);
+///
+class InnerRouterDelegate extends RouterDelegate<AppRoutePath>
+    with ChangeNotifier, PopNavigatorRouterDelegateMixin<AppRoutePath> {
+  ///
+  InnerRouterDelegate(AppState appState) : _appState = appState;
 
   @override
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-  BooksAppState get appState => _appState;
-  BooksAppState _appState;
-  set appState(BooksAppState value) {
+
+  AppState get appState => _appState;
+  AppState _appState;
+  set appState(AppState value) {
     if (value == _appState) {
       return;
     }
@@ -23,20 +30,30 @@ class InnerRouterDelegate extends RouterDelegate<BookRoutePath>
 
   @override
   Widget build(BuildContext context) {
+    final indexTab = appState.selectedIndex;
+
     return Navigator(
       key: navigatorKey,
       pages: [
-        if (appState.selectedIndex == 0) ...[
+        // 1 tab
+        if (indexTab == 0) ...[
           _booksListPage(),
           if (appState.selectedBook != null) _bookDetailsPage(),
-        ] else
-          _settingPage(),
+          // 2 tab
+        ] else if (indexTab == 1)
+          _settingPage()
+        // 3 tab
+        else if (indexTab == 2)
+          _creditPage(),
       ],
       onPopPage: (route, result) => _onPopPage(route, result),
     );
   }
 
+  /// добавить регулируемый возврат
   bool _onPopPage(Route route, result) {
+    log.i('2return route.didPop(result); ${route}');
+    log.i('2return route.didPop(result);');
     appState.selectedBook = null;
     notifyListeners();
 
@@ -50,8 +67,15 @@ class InnerRouterDelegate extends RouterDelegate<BookRoutePath>
     );
   }
 
+  Page _creditPage() {
+    return const FadeAnimationPage(
+      child: CreditScreen(),
+      key: ValueKey('CreditPage'),
+    );
+  }
+
   Page _bookDetailsPage() {
-    return MaterialPage(
+    return CupertinoPage(
       key: ValueKey(appState.selectedBook),
       child: BookDetailsScreen(book: appState.selectedBook),
     );
@@ -68,7 +92,7 @@ class InnerRouterDelegate extends RouterDelegate<BookRoutePath>
   }
 
   @override
-  Future<void> setNewRoutePath(BookRoutePath configuration) async {
+  Future<void> setNewRoutePath(AppRoutePath configuration) async {
     // Это не требуется для внутреннего делегата маршрутизатора, поскольку он не анализирует маршрут
     assert(false);
   }

@@ -31,7 +31,7 @@ analyzer:
     implicit-casts: false
 linter:
   rules:
-    # - public_member_api_docs
+    - public_member_api_docs
     - always_use_package_imports
     - avoid_empty_else
     - sort_constructors_first 
