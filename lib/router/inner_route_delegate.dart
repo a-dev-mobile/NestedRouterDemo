@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:nes_route/model/models.dart';
 import 'package:nes_route/pages_animation/fade_animation_page.dart';
@@ -8,6 +7,9 @@ import 'package:nes_route/screen/view/screen.dart';
 
 class InnerRouterDelegate extends RouterDelegate<BookRoutePath>
     with ChangeNotifier, PopNavigatorRouterDelegateMixin<BookRoutePath> {
+  InnerRouterDelegate(this._appState);
+
+  @override
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
   BooksAppState get appState => _appState;
   BooksAppState _appState;
@@ -18,8 +20,6 @@ class InnerRouterDelegate extends RouterDelegate<BookRoutePath>
     _appState = value;
     notifyListeners();
   }
-
-  InnerRouterDelegate(this._appState);
 
   @override
   Widget build(BuildContext context) {
@@ -36,14 +36,15 @@ class InnerRouterDelegate extends RouterDelegate<BookRoutePath>
     );
   }
 
-  bool _onPopPage(Route<dynamic> route, result) {
+  bool _onPopPage(Route route, result) {
     appState.selectedBook = null;
     notifyListeners();
+
     return route.didPop(result);
   }
 
   Page _settingPage() {
-    return FadeAnimationPage(
+    return const FadeAnimationPage(
       child: SettingsScreen(),
       key: ValueKey('SettingsPage'),
     );
@@ -62,12 +63,12 @@ class InnerRouterDelegate extends RouterDelegate<BookRoutePath>
         books: appState.books,
         onTapped: _handleBookTapped,
       ),
-      key: ValueKey('BooksListPage'),
+      key: const ValueKey('BooksListPage'),
     );
   }
 
   @override
-  Future<void> setNewRoutePath(BookRoutePath path) async {
+  Future<void> setNewRoutePath(BookRoutePath configuration) async {
     // Это не требуется для внутреннего делегата маршрутизатора, поскольку он не анализирует маршрут
     assert(false);
   }

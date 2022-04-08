@@ -2,18 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:nes_route/model/book.dart';
 
 class BooksListScreen extends StatelessWidget {
-  final List<Book> books;
-  final ValueChanged<Book> onTapped;
 
-  BooksListScreen({
+   const BooksListScreen({Key? key, 
     required this.books,
     required this.onTapped,
-  });
+  }) : super(key: key);
 
+  final List<Book> books;
+  final ValueChanged<Book> onTapped;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('BooksListScreen',),centerTitle: true,),
+      appBar: AppBar(
+        title: const Text(
+          'BooksListScreen',
+        ),
+        centerTitle: true,
+      ),
       body: ListView(
         children: [
           for (var book in books)
@@ -21,7 +26,7 @@ class BooksListScreen extends StatelessWidget {
               title: Text(book.title),
               subtitle: Text(book.author),
               onTap: () => onTapped(book),
-            )
+            ),
         ],
       ),
     );

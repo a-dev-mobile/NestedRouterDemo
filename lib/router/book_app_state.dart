@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nes_route/model/models.dart';
 
 class BooksAppState extends ChangeNotifier {
-  int _selectedIndex;
-
-  Book? _selectedBook;
+  BooksAppState() : _selectedIndex = 0;
 
   final List<Book> books = [
     Book('Stranger in a Strange Land', 'Robert A. Heinlein'),
@@ -12,9 +10,9 @@ class BooksAppState extends ChangeNotifier {
     Book('Fahrenheit 451', 'Ray Bradbury'),
   ];
 
-  BooksAppState() : _selectedIndex = 0;
-
   int get selectedIndex => _selectedIndex;
+  Book? _selectedBook;
+  int _selectedIndex;
 
   set selectedIndex(int idx) {
     _selectedIndex = idx;
@@ -36,6 +34,7 @@ class BooksAppState extends ChangeNotifier {
 
   int getSelectedBookById() {
     if (!books.contains(_selectedBook)) return 0;
+    
     return books.indexOf(_selectedBook!);
   }
 

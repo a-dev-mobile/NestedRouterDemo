@@ -4,20 +4,21 @@ import 'package:nes_route/router/book_app_state.dart';
 import 'package:nes_route/router/inner_route_delegate.dart';
 
 class AppShell extends StatefulWidget {
-  final BooksAppState? appState;
-
-  AppShell({
+  const AppShell({
+    Key? key,
     @required this.appState,
-  });
+  }) : super(key: key);
 
+  final BooksAppState? appState;
   @override
   _AppShellState createState() => _AppShellState();
 }
 
 class _AppShellState extends State<AppShell> {
-  InnerRouterDelegate? _routerDelegate;
+  late InnerRouterDelegate? _routerDelegate;
   ChildBackButtonDispatcher? _backButtonDispatcher;
 
+  @override
   void initState() {
     super.initState();
     _routerDelegate = InnerRouterDelegate(widget.appState!);
@@ -40,7 +41,7 @@ class _AppShellState extends State<AppShell> {
 
   @override
   Widget build(BuildContext context) {
-    var appState = widget.appState;
+    final appState = widget.appState;
 
     // Приоритет требования, Если есть параллельные суб-маршрутизаторы, вам понадобится
     // чтобы выбрать, какой из них должен быть приоритетным;
@@ -55,12 +56,12 @@ class _AppShellState extends State<AppShell> {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.settings), label: 'Settings'),
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
         ],
         currentIndex: appState!.selectedIndex,
-        onTap: (newIndex) {
-          appState.selectedIndex = newIndex;
-        },
+        onTap: (newIndex) => appState.selectedIndex = newIndex,
       ),
     );
   }
